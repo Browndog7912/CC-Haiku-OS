@@ -1,3 +1,9 @@
+--[[
+(from basalt os)
+MIT License
+Copyright (c) 2025 Pyroxenium
+]]
+
 local uihelpers = {}
 
 -- Recreates the old double-click convenience at OS level. Mouse-down only
