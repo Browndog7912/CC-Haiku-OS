@@ -15,5 +15,5 @@ Haiku OS is a operating system made to run on a minecraft mod called CC: Tweajed
     * Basalt OS is under [MIT Licance](https://github.com/Pyroxenium/BasaltOS/blob/main/LICENSE)
 * Minex Operaing System [ComputerCraft Forms](https://forums.computercraft.cc/index.php?topic=641.0)
 * JackMacWindows for "gist.lua" and "screenfetch.lua" (their might be more)
-
+* JackMacWindows for the [PrimeUI](https://github.com/MCJack123/PrimeUI) for the installer's UI
 # License
