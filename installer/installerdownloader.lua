@@ -1,6 +1,8 @@
 -- WIP
 local termx, termy = term.getSize()
 
+if not(fs.exists("/hakosinstaller.config")) then printError("NO INSTALL CONFIG"); return end
+--shell.exit()
 local fileList = {
     ["FilesDownload"] = {
         {"/startup.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/startup.lua"},
@@ -32,31 +34,35 @@ local fileList = {
         {"/system/desktop/desktop.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/desktop/desktop.lua"},
         {"/system/desktop/hde.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/desktop/hde.lua"},
         {"/system/desktop/newauth.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/desktop/newauth.lua"},
-        {"/system/systemapps/calculator/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calculator/app.config"},
+        --{"/system/systemapps/calculator/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calculator/app.config"},
         {"/system/systemapps/calculator/calculator_logic.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calculator/calculator_logic.lua"},
         {"/system/systemapps/calculator/main.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calculator/main.lua"},
 
         {"/system/systemapps/calendar/main.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calendar/main.lua"},
-        {"/system/systemapps/calendar/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calendar/app.config"},
+        --{"/system/systemapps/calendar/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calendar/app.config"},
         {"/system/systemapps/calendar/calendar_logic.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/calendar/calendar_logic.lua"},
 
         {"/system/systemapps/cpl/main.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/cpl/main.lua"},
-        {"/system/systemapps/cpl/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/cpl/app.config"},
+        --{"/system/systemapps/cpl/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/cpl/app.config"},
 
-        {"/system/systemapps/edit/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/edit/app.config"},
+        --{"/system/systemapps/edit/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/edit/app.config"},
 
-        {"/system/systemapps/files/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/files/app.config"},
+        --{"/system/systemapps/files/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/files/app.config"},
         {"/system/systemapps/files/main.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/files/main.lua"},
 
         {"/system/systemapps/notepad/main.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/notepad/main.lua"},
-        {"/system/systemapps/notepad/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/notepad/app.config"},
+        --{"/system/systemapps/notepad/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/notepad/app.config"},
 
-        {"/system/systemapps/shell/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/shell/app.config"},
+        --{"/system/systemapps/shell/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/shell/app.config"},
 
-        {"/system/systemapps/paint/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/paint/app.config"},
+        --{"/system/systemapps/paint/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/paint/app.config"},
 
         {"/boot/init.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/boot/init.lua"},
         {"/boot/bootloader.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/boot/bootloader.lua"},
+
+        {"/apis/menu.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/apis/menu.lua"},
+        {"/apis/basalt.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/apis/basalt.lua"},
+        {"/apis/osapi.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/apis/osapi.lua"},
 
     }
 }
@@ -64,6 +70,7 @@ local fileList = {
 function printStatus(text, type, color)
     term.setTextColor(colors.white)
     local cursorx, cursory = term.getCursorPos()
+    local termx, termy = term.getSize()
     term.setCursorPos(8, cursory)
     term.write(text)
     term.setCursorPos(1, cursory)
@@ -72,7 +79,9 @@ function printStatus(text, type, color)
     term.setTextColor(color)
     term.write(type)
 
-    term.setCursorPos(1, cursory+1)
+    if cursory == termy then nextLine = termy else nextLine = cursory + 1 end
+    print("")
+    term.setCursorPos(1, nextLine)
 end
 
 function download(url, file)
@@ -103,6 +112,8 @@ local function setTitle(title)
     term.setCursorPos(3, 3)
     term.write(("\x8C"):rep(#(title)))
 end
+wholeScreen = term.current()
+
 term.setBackgroundColor(colors.blue)
 term.clear()
 setTitle("Hakiu OS Setup")
@@ -118,7 +129,7 @@ downloadList = fileList["FilesDownload"]
 failedDownloads = {}
 
 for i = 1, #downloadList do
-    local working, downloadError = download(downloadList[i][2], downloadList[i][1])
+    local working, downloadError = true, nil --download(downloadList[i][2], downloadList[i][1])
     if working then
         status = " OK "
         statusColor = colors.green
@@ -131,10 +142,41 @@ for i = 1, #downloadList do
         sleep(2)
     end
     printStatus(text, status, statusColor)
-    sleep(1)
+    sleep(0)
 end
 
+term.redirect(wholeScreen)
 drawStatus("Configureing Hakiu OS")
+term.redirect(logWindow)
+term.clear()
+term.setTextColor(colors.white)
+--shell.run("wget run https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/installer/write-config.lua")
+
+local config = require("/system/apis/config")
+config.init()
+printStatus("Loading Config API", " OK ", colors.green)
+
+local file = fs.open("/system/config/users.config", "r")
+file.readAll()
+file.close()
+
+auth = {
+    ["auth"] = {
+        ["users"] = {
+            root = {
+                ["username"] = "root",
+                ["displayName"] = "root",
+                ["password"] = "root",
+            },
+        },
+    },
+}
+
+local file = fs.open("/hakosinstaller.config", "w")
+file.write(textutils.serialise(defaultAuth))
+file.close()
+
+
 
 while true do
     sleep(1)
