@@ -129,7 +129,7 @@ downloadList = fileList["FilesDownload"]
 failedDownloads = {}
 
 for i = 1, #downloadList do
-    local working, downloadError = true, nil ownload(downloadList[i][2], downloadList[i][1])
+    local working, downloadError = true, nil download(downloadList[i][2], downloadList[i][1])
     if working then
         status = " OK "
         statusColor = colors.green
