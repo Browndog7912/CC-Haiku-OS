@@ -46,19 +46,17 @@ end
 -- input url and file location, downloads url as file
 function download(url, file)
 	if http.checkURL(url) == true then rr = true osapi.log("osapi-func","dl:checkurl=true",3)
-	else osapi.log("osapi-func","dl:checkurl:false",1) return false end
+	else return false end
 	while rc ~= 3 and rr == true do
 		local data = http.get(url)
 		local result = data.readAll()
 		data.close()
-		osapi.log("osapi-func","dl:file retrieved",3)
 		if result ~= nil then
 			downloadedFile = fs.open(file , "w")
 			downloadedFile.write(result)
 			downloadedFile.close()
 			return true
 		else
-			osapi.log("osapi-func","dl:retrieve=nil",3)
 			os.sleep(3)
 			return false
 		end
