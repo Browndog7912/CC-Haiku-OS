@@ -52,5 +52,13 @@ local fileList = {
 
         {"/system/systemapps/paint/app.config", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/system/systemapps/paint/app.config"},
 
+        {"/boot/init.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/boot/init.lua"},
+        {"/boot/bootloader.lua", "https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/os/boot/bootloader.lua"},
+
     }
 }
+
+
+local file = fs.open("files.config", "w")
+file.write(textutils.serialise(fileList))
+file.close()
