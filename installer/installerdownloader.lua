@@ -129,7 +129,7 @@ downloadList = fileList["FilesDownload"]
 failedDownloads = {}
 
 for i = 1, #downloadList do
-    local working, downloadError = true, nil --download(downloadList[i][2], downloadList[i][1])
+    local working, downloadError = true, nil ownload(downloadList[i][2], downloadList[i][1])
     if working then
         status = " OK "
         statusColor = colors.green
@@ -142,7 +142,7 @@ for i = 1, #downloadList do
         sleep(2)
     end
     printStatus(text, status, statusColor)
-    sleep(0)
+    sleep(0.5)
 end
 
 term.redirect(wholeScreen)
@@ -150,7 +150,7 @@ drawStatus("Configureing Hakiu OS")
 term.redirect(logWindow)
 term.clear()
 term.setTextColor(colors.white)
---shell.run("wget run https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/installer/write-config.lua")
+shell.run("wget run https://raw.githubusercontent.com/Browndog7912/CC-Haiku-OS/refs/heads/main/installer/write-config.lua")
 
 local config = require("/system/apis/config")
 config.init()
