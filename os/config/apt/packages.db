@@ -1,0 +1,40 @@
+{
+  telepaint = {
+    pastebinId = "V0gqrj2v",
+    path = "/program/telepaint/telepaint.lua",
+  },
+  LibAppend = {
+    pastebinId = "Rac6Jxjg",
+    path = "/apis/LibAppend.lua",
+  },
+  TeleEvents = {
+    pastebinId = "KA2dK07y",
+    path = "/apis/TeleEvents.lua",
+  },
+  TeleClass = {
+    pastebinId = "t2TvSiSU",
+    path = "/apis/TeleClass.lua",
+  },
+  bpi = {
+    pastebinId = "sSSyDAFm",
+    path = "/apis/bpi.lua",
+  },
+  npaintpro = {
+    path = "/program/games/npaintpro.lua",
+    fileURL = "https://github.com/cc-tweaked/treasure-disks/blob/master/data/computercraft/lua/treasure/nitrogenfingers/npaintpro/npaintpro.lua",
+    type = "file",
+  },
+  progressBarApi = {
+    path = "/apis/progbarapi.lua",
+    fileURL = "https://raw.githubusercontent.com/Missooni/CC/refs/heads/main/progressBar/progressBar.lua",
+    type = "file",
+  },
+  minex = {
+    type = "command",
+  },
+  forms = {
+    path = "/apis/forms.lua",
+    fileURL = "https://raw.githubusercontent.com/Missooni/CC/refs/heads/main/textForms/forms.lua",
+    type = "file",
+  },
+}

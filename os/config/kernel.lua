@@ -1,0 +1,15 @@
+{
+  userdata = "/etc/minux-main/data/user/",
+  logpath = "/var/log/",
+  crashhandler = false,
+  login = true,
+  automaticSystemUpdate = false,
+  logmode = 0,
+  ui = "/system/desktop/desktop.lua",
+  aptconfig = "/config/apt/config.lua",
+  aptinstall = "/config/apt/installed.lua",
+  tempfolder = "/temp/",
+  loginMode = true,
+  shell = "/system/shell.lua",
+  authsys = "/system/desktop/desktop.lua /system/desktop/newauth.lua",
+}
