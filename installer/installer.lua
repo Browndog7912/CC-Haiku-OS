@@ -1444,6 +1444,11 @@ Credits:
 (this might be somewhat incomplete)
 ]]
 
+infomationMessage = [[
+Welcome to Haiku OS, This OS is still in Early Alpha, It is still being wokred on and can stop working at any time!
+This is a bit incomplete and will have more infomation added to it
+]]
+
 --local file = fs.open("/betaterms.txt", "r")
 --local text = file.readAll()
 local betatos = ""
@@ -1511,7 +1516,7 @@ function showLicanceAgreenment()
     PrimeUI.borderBox(term.current(), 4, 6, 40, 10)
 
     PrimeUI.keyAction(keys.f, function()
-        showBetaTerms()
+        showInfomation()
     end)
     PrimeUI.keyAction(keys.tab, function()
         showWelcomeScreen()
@@ -1521,10 +1526,29 @@ function showLicanceAgreenment()
     end)
 end
 
+function showInfomation()
+    PrimeUI.clear()
+    setTitle("Haiku OS Info")
+    drawStatus("Enter=Continue TAB=Back F1=Quit")
+
+    local scroller = PrimeUI.scrollBox(term.current(), 4, 6, 40, 10, 9000, true, true)
+    PrimeUI.drawText(scroller, infomationMessage, true)
+    PrimeUI.borderBox(term.current(), 4, 6, 40, 10)
+
+    PrimeUI.keyAction(keys.enter, function()
+        showBetaTerms()
+    end)
+    PrimeUI.keyAction(keys.tab, function()
+        showLicanceAgreenment()
+    end)
+    PrimeUI.keyAction(keys.f1, function()
+        exitScreen()
+    end)
+end
+
 function showBetaTerms()
     -- Beta terms not used 
     if betatos == "" or nil then showPartitioner(); return end
-
     PrimeUI.clear()
     setTitle("BETA Licance Agreenment")
     drawStatus("F=I Agree D=I Don't Agree TAB=Back")
@@ -1658,7 +1682,7 @@ function newUserAccountPassword()
     PrimeUI.clear()
     drawStatus("ENTER=Create TAB=Back F1=Quit")
     setTitle("Haiku OS User Setup")
-    PrimeUI.label(term.current(), 3, 5, "Enter the Username for your account")
+    PrimeUI.label(term.current(), 3, 5, "Enter the Password for your account")
     PrimeUI.borderBox(term.current(), 4, 7, 40, 1)
     PrimeUI.inputBox(term.current(), 4, 7, 40, function(enteredInput) _G.userAccountPassword = enteredInput; showComputerName() end)
     PrimeUI.keyAction(keys.tab, function()
