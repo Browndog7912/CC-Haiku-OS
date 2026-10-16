@@ -20,9 +20,6 @@ function main.initApis()
     main.printStatus("Loading Config API", " OK ", colors.green)
     local configorationapi = require("/system/apis/config")
     configorationapi.init()
-    
-    main.printStatus("Loading Basalt (2.5)", " OK ", colors.green)
-    local windoman = require("/system/services/ui")
 
     main.printStatus("Loading Dialog API", " OK ", colors.green)
     local dialog = require("/system/apis/dialog")
